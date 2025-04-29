@@ -1,6 +1,7 @@
 name: cicd-documentation
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
