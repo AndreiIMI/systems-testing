@@ -29,4 +29,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: doxygen-docs
-          path: html/  # presupunând că Doxygen generează în `html/`
+          path: laboratories/cicd-documentation/html/  # presupunând că Doxygen generează în `html/`
