@@ -1,0 +1,27 @@
+name: Generate Doxygen Docs
+
+on:
+  push:
+    tags:
+      - 'v*'  # Rulează doar când se face push la taguri care încep cu 'v', ex: v1.0.0
+
+jobs:
+  generate-docs:
+    name: 📘 Generate Doxygen Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 📦 Install Doxygen
+        run: sudo apt-get update && sudo apt-get install -y doxygen
+
+      - name: 🛠️ Run Doxygen
+        run: doxygen Doxyfile
+
+      - name: 📤 Upload documentation as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: doxygen-docs
+          path: html/  # presupunând că Doxygen generează în `html/`
