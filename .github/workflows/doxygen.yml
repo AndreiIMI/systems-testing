@@ -18,7 +18,11 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y doxygen
 
       - name: 🛠️ Run Doxygen
-        run: doxygen Doxyfile
+        shell: bash
+        run: |
+          cd laboratories/cicd-documentation
+          doxygen -g
+          doxygen Doxyfile
 
       - name: 📤 Upload documentation as artifact
         uses: actions/upload-artifact@v4
